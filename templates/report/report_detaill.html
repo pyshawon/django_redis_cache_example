@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="album py-5 bg-light">
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="{{ report.photo.url }}" alt="">
+        </div>
+        <div class="col">
+          <h1>Name: {{ report.name }}</h1>
+          <p class="mb-0">Posted on: {{ report.timestamp }}</p>
+          <p class="mb-1">Details: {{ report.description|linebreaks }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

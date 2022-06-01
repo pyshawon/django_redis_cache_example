@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Find or Report Missing Person</h1>
+        <p>
+          <a href="#" class="btn btn-secondary my-2">Report Missing Person</a>
+          or
+          <form action="" method="GET">
+            <input type="text" name="q" class="form-control" placeholder="missing person name">
+            <button type="submit" class="btn btn-primary my-2">Find Missing Person</button>
+          </form>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+        {% for person in reports %}
+        <div class="col">
+          <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ person.photo.url }}" >
+            <div class="card-body">
+              <p class="m-0">Name: {{ person.name }}</p>
+              <p>Posted on: {{ person.timestamp }}</p>
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'report-details' person.id %}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View Details</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
